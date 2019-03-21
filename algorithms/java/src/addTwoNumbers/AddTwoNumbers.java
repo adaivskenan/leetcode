@@ -28,6 +28,8 @@ package addTwoNumbers;
  *
  * @author adaivskenan
  */
+
+
 public class AddTwoNumbers {
 
 	public static void main(String[] args) {
@@ -93,3 +95,25 @@ class ListNode {
 		val = x;
 	}
 }
+
+/*
+ * ======================Approach 2: use less code and variables=====================
+ */
+//////////////////////////////////////////////////////////////////////// 
+//		int carry = 0;
+//		ListNode p, dummy = new ListNode(0);
+//		p = dummy;
+//		while (l1 != null || l2 != null || carry != 0) {
+//			if (l1 != null) {
+//				carry += l1.val;
+//				l1 = l1.next;
+//			}
+//			if (l2 != null) {
+//				carry += l2.val;
+//				l2 = l2.next;
+//			}
+//			p.next = new ListNode(carry % 10);
+//			carry /= 10;
+//			p = p.next;
+//		}
+//		return dummy.next;
