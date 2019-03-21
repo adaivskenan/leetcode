@@ -37,6 +37,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
 		System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("pwwkew"));
 		System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("aab"));
 		System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("bwf"));
+		System.out.println(new LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring("abca"));
 	}
 	
 	/*
@@ -90,7 +91,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
 		Set<Character> set = new HashSet<>(s.length());
 		int i=0;
 		for(int j=0; j<s.length();) {
-			//if max sum i is bigger then the length of the rest characters, 
+			//if (max + i) is bigger than the length of the rest characters,
 			// the rest can not be the max sub string
 			if(max+i>s.length()) { 
 				break;
@@ -113,17 +114,20 @@ public class LongestSubstringWithoutRepeatingCharacters {
 		int max = 0;
 		int left = 0;
 		int right = 0;
-		for (int i = 0; i < s.length(); i++) {
+		for (; right < s.length(); right++) {
+			if(max+left>=s.length()) {
+				break;
+			}
 			char rc = s.charAt(right);
-			for (int j = 0; j < right; j++) {
-				if (s.charAt(left) == rc) {
+			for (int j = left; j < right; j++) {
+				if (s.charAt(j) == rc) {
 					max = Math.max(max, (right - left));
 					left = j + 1;
 					break;
 				}
 			}
 		}
-		return max;
+		return Math.max(max, (right - left));
 	}
 	
 }
